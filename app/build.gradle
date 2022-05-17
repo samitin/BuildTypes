@@ -20,6 +20,19 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField("String","MY_BUILD_TYPE","\"RELEASE\"")
+            debuggable true
+            versionNameSuffix '-release'
+        }
+        beta{
+            initWith debug
+            versionNameSuffix "-beta"
+            debuggable true
+            buildConfigField("String","MY_BUILD_TYPE","\"BETA\"")
+        }
+        debug {
+            versionNameSuffix '-debag'
+            buildConfigField("String","MY_BUILD_TYPE","\"DEBAG\"")
         }
     }
     compileOptions {
@@ -28,6 +41,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
     }
 }
 
